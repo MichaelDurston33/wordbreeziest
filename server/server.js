@@ -102,7 +102,7 @@ function checkIfContainedInText (obj, searchTerm) {
   }
 }
 
-app.post('/search', (req, res) => {
+app.post('https://glacial-beach-19594.herokuapp.com/search', (req, res) => {
   var SearchedItem = req.body.SearchQuery
   Media.find().then((medias) => {
     var mainText = getMainText(medias);
