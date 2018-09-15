@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Dosis|Goudy+Bookletter+1911|Sunflower:300" rel="stylesheet">
+
+    <meta charset="utf-8">
+    <title>Thank you!</title>
+  </head>
+
+  <body>
+    <div id="book">
+      <div id="bookCover">
+      <div id="pageOne" class="pages"></div>
+      <div id="pageTwo" class="pages"></div>
+      <div id="pageThree" class="pages"></div>
+      <div id="centerLine" class="pages"></div>
+      <div id="bookSpine" class="pages"></div>
+        <div id="searchedTitle"><u>Media Added!</u></div>
+    <form method ="get" action="/">
+      <button type="submit" id="goBackButton"></button>
+    </form>
+
+      </div>
+        </div>
+    </div>
+  </body>
+</html>
+
+
+
+<style>
+body {
+  background: #381D2A;
+}
+
+
+/* width */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #FFCB47;
+    border-radius: 10px;
+}
+
+
+#bookCover {
+  width: 620px;
+  height: 400px;
+  position: absolute;
+  top: 50%; right: 50.0%;
+  transform: translate(50%,-50%);
+  background-color: #6F1D1B;
+  color: #BB9457;
+  border-radius: 15px;
+  z-index: -2;
+  font-family: 'Dosis', sans-serif;
+}
+
+#searchedTitle {
+  position: absolute;
+  top: 40%;
+  transform: translate(56%, 40%) skew(0, 7deg);
+  font-size: 25px;
+  color: #274060;
+}
+
+#adminform {
+   position: absolute;
+  top: 53.6%; right: 80%;
+  transform: translate(60%,-50%) skew(0, 7deg);
+}
+
+.formBoxes {
+  background-color: #FFCB47;
+  border: none;
+}
+
+#centerLine {
+  width:5px;
+  height:360.8px;
+  background-color: #381D2A;
+  position: absolute;
+  top: 53.6%; right: 48%;
+  transform: translate(60%,-50%);
+  opacity: 0.8
+}
+
+#bookSpine {
+  width:15px;
+  height:400px;
+  background-color: #274060;
+  position: absolute;
+  top: 50%; right: 51.3%;
+  transform: translate(60%,-50%);
+  opacity: 0.8;
+  z-index: -2
+}
+
+#goBackButton {
+  z-index: 5;
+  position: absolute;
+  position: absolute;
+  top: 50%; right: 33%;
+  width: 0;
+	height: 0;
+	border-top: 50px solid transparent;
+	border-right: 100px solid #274060;
+	border-bottom: 50px solid transparent;
+  background-color: transparent;
+  border-left: transparent;
+  transform: translate(60%,-50%) skew(0, -13deg);
+}
+
+#cols {
+  max-height: 280px;
+  width: 300px;
+  position: absolute;
+  top: 50%; right: 80.2%;
+  transform: translate(60%,-50%) skew(0, 7deg);
+  overflow-y: auto;
+}
+
+#pageOne {
+  position: absolute;
+  text-align: center;
+  border: none;
+  padding: 12px;
+  position: absolute;
+  top: 50%; right: 57%;
+  transform: translate(60%,-50%);
+  height: 346px;
+  width: 520px;
+}
+
+#pageOne:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 51%;
+  background: #FFCB47;
+  border: none;
+  border-radius: 15px;
+  -webkit-transform: skew(0deg, 6deg);
+  -moz-transform: skew(0deg, 6deg);
+  -ms-transform: skew(0deg, 6deg);
+  -o-transform: skew(0deg, 6deg);
+  transform: skew(0deg, 6deg);
+}
+#pageOne:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 50%;
+  background: #FFCB47;
+  border: none;
+  border-radius: 15px;
+  -webkit-transform: skew(0deg, -6deg);
+  -moz-transform: skew(0deg, -6deg);
+  -ms-transform: skew(0deg, -6deg);
+  -o-transform: skew(0deg, -6deg);
+  transform: skew(0deg, -6deg);
+  z-index: 1;
+}
+
+#pageTwo {
+  width: 259px;
+  height: 372px;
+  background-color: #BB9457;
+  position: absolute;
+  top: 50.5%; right: 75.3%;
+  transform: translate(50%,-50%) skew(0deg, 4.8deg);
+  z-index: -1;
+  border-radius: 15px;
+}
+
+#pageThree {
+  width: 259px;
+  height: 372px;
+  background-color: #274060;
+  position: absolute;
+  top: 49.8%; right: 102.9%;
+  transform: translate(120%,-50%) skew(0deg, 4.8deg);
+  z-index: -1;
+  border-radius: 15px;
+}
+
+
+ </style>
