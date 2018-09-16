@@ -18,8 +18,7 @@ app.set('view engine', 'hbs');
 
 
 mongoose.Promise = global.Promise;
-console.log(process.env.DB_USER)
-mongoose.connect('mongodb://'+process.env.DB_USER+':'+process.env.DB_PASS+'@ds155352.mlab.com:55352/books')
+mongoose.connect(process.env.DB_URI)
 
 var mediaSchema = new mongoose.Schema({
   SourceType: String,
@@ -53,7 +52,7 @@ app.listen(port, () => {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-mongoose.connect('mongodb://'+process.env.DB_USER+':'+process.env.DB_PASS+'@ds155352.mlab.com:55352/books');
+mongoose.connect(process.env.DB_URI);
 
 var Media = mongoose.model("Media", mediaSchema);
 var IdNumber = mongoose.model("idNumber", mediaSchema);
@@ -108,7 +107,7 @@ function checkIfContainedInText (obj, searchTerm) {
   }
 }
 
-app.post('https://glacial-beach-19594.herokuapp.com/search', (req, res) => {
+app.post('/search', (req, res) => {
   var SearchedItem = req.body.SearchQuery
   Media.find().then((medias) => {
     var mainText = getMainText(medias);
@@ -118,8 +117,7 @@ app.post('https://glacial-beach-19594.herokuapp.com/search', (req, res) => {
       return;
     } else {
       var filteredBulk = filterText(String(mainText), SearchedItem);
-      console.log('checkIfContainedInText returned true');
-      res.render('search.hbs', {
+      res.render('../views/search.hbs', {
         title: filteredBulk
       })
     }
