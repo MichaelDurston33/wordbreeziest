@@ -4,16 +4,22 @@ var mongoose = require('mongoose');
 const MongoClient = require('mongodb').MongoClient;
 var bodyParser = require('body-parser');
 const hbs = require('hbs');
+require('dotenv').config()
 
 var publicPath = path.join(__dirname, '../public');
 var app = express();
 const port = process.env.PORT || 3000;
+var url = process.env.MONGOLAB_URI;
 
 app.set('view engine', 'hbs');
 //app.use(express.static(publicPath));
+//mongoose.connect('mongodb://'+process.env.DB_USER+':'+process.env.DB_PASS'@ds155352.mlab.com:55352/books')
+//mongoose.connect("mongodb://lungha:1g9C94ghas0@ds155352.mlab.com:55352/books");
+
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost:27017/textDatabase')
+console.log(process.env.DB_USER)
+mongoose.connect('mongodb://'+process.env.DB_USER+':'+process.env.DB_PASS+'@ds155352.mlab.com:55352/books')
 
 var mediaSchema = new mongoose.Schema({
   SourceType: String,
@@ -47,7 +53,7 @@ app.listen(port, () => {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-mongoose.connect("mongodb://localhost:27017/textDatabase");
+mongoose.connect('mongodb://'+process.env.DB_USER+':'+process.env.DB_PASS+'@ds155352.mlab.com:55352/books');
 
 var Media = mongoose.model("Media", mediaSchema);
 var IdNumber = mongoose.model("idNumber", mediaSchema);
@@ -87,7 +93,7 @@ function filterText (obj, searchTerm) {
   for (var i = 0; i<matchedSentences.length; i++) {
     empty.push(desiredHTML + matchedSentences[i]);
   }
-  return empty.join('').replace(boldMe, '<b>'+searchTerm+'</b>')
+  return empty.join('').replace(boldMe, '<b style="color:blue">'+searchTerm+'</b>')
 }
 
 function checkIfContainedInText (obj, searchTerm) {
@@ -102,7 +108,7 @@ function checkIfContainedInText (obj, searchTerm) {
   }
 }
 
-app.post('https://glacial-beach-19594.herokuapp.com/search', (req, res) => {
+app.post('/search', (req, res) => {
   var SearchedItem = req.body.SearchQuery
   Media.find().then((medias) => {
     var mainText = getMainText(medias);
